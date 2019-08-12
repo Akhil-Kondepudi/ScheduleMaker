@@ -1,6 +1,6 @@
 from flask import Flask, render_template, flash, redirect, url_for, session
 from flask_session import Session
-from forms import MatchForm, Match2Form
+from forms import MatchForm, Match2Form, TimeForm
 app = Flask(__name__)
 
 SESSION_TYPE = 'redis'
@@ -45,9 +45,17 @@ def match3():
 							rows=session.get('match_row', None), ranges=int(session.get('match_number', None)/session.get('match_row', None)),
 							name_num=session.get('name_number', None), matches=session.get('match_number', None))
 
-@app.route('/time')
+@app.route('/time', methods=['GET', 'POST'])
 def time():
-	return render_template('time.html')
+	form = TimeForm()
+	if form.validate_on_submit():
+		session['time_number1'] = form.match_number.data
+		session['time_number2'] = form.match_number.data
+		session['name_number'] = form.name_number.data
+		session['time_row'] = form.match_row.data
+		session['robot_number'] = form.robot_number.data
+		return redirect(url_for('match2'))
+	return render_template('time.html', form=form, num=0)
 
 if __name__ == '__main__':
 	app.run(debug=True)

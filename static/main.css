@@ -1,6 +1,6 @@
 body {  /* this is the css page that makes everything look great */
-  background: #05841e;
-  color: #05841e;
+  background: #fafafa;
+  color: #333333;
   margin-top: 5rem;
 }
 
@@ -9,15 +9,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .bg-steel {
-  background-color: #05841e;
+  background-color: #e6e6e6;
 }
 
 .site-header .navbar-nav .nav-link {
-  color: #05841e;
+  color: #ebebeb;
 }
 
 .site-header .navbar-nav .nav-link:hover {
-  color: #05841e;
+  color: #b5fff1;
 }
 
 .site-header .navbar-nav .nav-link.active {
